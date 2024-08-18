@@ -1,0 +1,74 @@
+###Get the service document
+http://localhost:4004/odata/v4/ProjectServices
+
+
+###geting the serivce metadata document
+http://localhost:4004/odata/v4/ProjectServices/$metadata
+
+###getting all the employee data
+http://localhost:4004/odata/v4/ProjectServices/EmployeeSet
+
+# ###getting name of employees whose name starts with s
+# DELETE http://localhost:4004/odata/v4/ProjectServices/EmployeeSet?$filter=contains(nameFirst,'Su')
+
+
+###getting the employee data with an id
+http://localhost:4004/odata/v4/ProjectServices/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+
+###count of employess
+http://localhost:4004/odata/v4/ProjectServices/EmployeeSet/$count
+
+
+###top & skip
+http://localhost:4004/odata/v4/ProjectServices/EmployeeSet?$top=2&$skip=5
+
+
+###filter
+http://localhost:4004/odata/v4/ProjectServices/EmployeeSet?$filter=bankName eq 'My Bank of New York'
+
+
+###selecting only particualr column data
+http://localhost:4004/odata/v4/ProjectServices/EmployeeSet?$select=nameFirst,nameLast,loginName
+
+
+###getting data from cds views
+http://localhost:4004/odata/v4/ProjectServices/Products/74867AD200E41EDBA5D8B06B26EB4052?$expand=To_Items
+
+
+###getting data by id
+http://localhost:4004/odata/v4/ProjectServices/ProductSet/74867AD200E41EDBA5D8B06B26EBA052
+
+
+###getting the data from the its association
+http://localhost:4004/odata/v4/ProjectServices/POs/02BD2137-0890-1EEA-A6C2-BB55C1979000/Items
+
+
+###getting full purchase order data
+http://localhost:4004/odata/v4/ProjectServices/POs/02BD2137-0890-1EEA-A6C2-BB55C1979000?$expand=Items
+
+
+
+###post a new record and seeing the generic handlers implementations
+POST http://localhost:4004/odata/v4/ProjectServices/EmployeeSet
+Content-Type: application/json
+ 
+{
+  "nameFirst": "ChristianoNNN",
+  "nameMiddle": "M",
+  "nameLast": "Ronaldo",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": "+918810504555",
+  "email": "chris.ronaldo@gmail.com",
+  "loginName": "CHRISRL",
+  "Currency_code": "USD",
+  "salaryAmount": 10000007,
+  "accountNumber": "32109876",
+  "bankId": "66665555",
+  "bankName": "My Bank of London"
+}
+
+
+###deletion
+DELETE http://localhost:4004/odata/v4/ProjectServices/EmployeeSet(93074eff-079b-4ac4-8578-7c5dde740309)
